@@ -16,13 +16,13 @@ export default function AlarmRoot() {
 
     // 이곳에도 아까 위에서 앱 등록할때 받은 'firebaseConfig' 값을 넣어주세요.
     const firebaseConfig = {
-      apiKey: 'AIzaSyCbOsE40Ogrn0eFQATDWjXla_0nPx3v64Y',
-      authDomain: 'churest-83cc0.firebaseapp.com',
-      projectId: 'churest-83cc0',
-      storageBucket: 'churest-83cc0.appspot.com',
-      messagingSenderId: '743767892126',
-      appId: '1:743767892126:web:8e150a2e414a6d42039b8f',
-      measurementId: 'G-5007C6N4FN',
+       apiKey: process.env.NEXT_PUBLIC_API_KEY,
+      authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
+      projectId: process.env.NEXT_PUBLIC_PROJECT_ID,
+      storageBucket: process.env.NEXT_PUBLIC_STORAGE_BUCKET,
+      messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_ID,
+      appId: process.env.NEXT_PUBLIC_APP_ID,
+      measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID, 
     };
 
     const app = initializeApp(firebaseConfig);
@@ -32,7 +32,7 @@ export default function AlarmRoot() {
     // 이곳 vapidKey 값으로 아까 토큰에서 사용한다고 했던 인증서 키 값을 넣어주세요.
     getToken(messaging, {
       vapidKey:
-        'BLz5WdFuqDWHeJ5PCHiTqK-RyDSCFNJDQwhqk0kQrV3NyVyHfbP3mWVIMoN__Txyz6QxF8VBYG6h4nBYO-gz0BQ',
+        process.env.NEXT_PUBLIC_VAPID_KEY,
     })
       .then((currentToken) => {
         if (currentToken) {
